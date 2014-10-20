@@ -1,0 +1,22 @@
+* handle pages
+** like posts
+* handle assets
+** cp imgs
+** sass and bundle scss
+** mininfy and bundle js
+* handle templates
+** make should depend on template and pass to pandoc
+* write assets
+* write templates
+* post list
+** this is in C, using YAML library
+*** find which are published
+*** write list of titles, file names, and dates
+* home (with teaser)
+** reads post list, and using that reads the first $(X) posts
+** some kind of template
+** write out the result as index.html
+* archive (and for years, months)
+* RSS 
+* tags
+* tag RSS
