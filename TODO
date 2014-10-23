@@ -1,7 +1,7 @@
 X* handle pages
 ** like posts
 * handle assets
-** cp imgs
+X** cp imgs
 ** sass and bundle scss
 ** mininfy and bundle js
 * handle templates
