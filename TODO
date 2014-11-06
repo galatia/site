@@ -1,9 +1,8 @@
 X* handle pages
-** like posts
-* handle assets
+X* handle assets
 X** cp imgs
-** sass and bundle scss
-** mininfy and bundle js
+X** sass and bundle scss
+X** mininfy and bundle js
 * handle templates
 ** make should depend on template and pass to pandoc
 * write assets
@@ -20,3 +19,8 @@ X** cp imgs
 * RSS 
 * tags
 * tag RSS
+
+
+SEB:
+* left is text, right is code and adds the parts
+* highlights the correct tab
