@@ -22,7 +22,7 @@ site/%.html:rsrc/pages/%.md
 
 imgs:
 	@mkdir -p site
-	cp rsrc/assets/imgs/* site/
+	cp -R rsrc/assets/imgs/. site/
 
 scss:site/index.css
 site/index.css:rsrc/assets/index.scss
@@ -30,7 +30,7 @@ site/index.css:rsrc/assets/index.scss
 	sassc -t compressed $< > $@
 	rm $<
 rsrc/assets/index.scss:$(SCSS_SOURCES)
-	cat $^ > $@ 
+	cat $^ > $@
 
 js:site/index.js
 site/index.js:$(JS_SOURCES)
