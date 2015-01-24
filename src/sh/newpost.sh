@@ -20,7 +20,7 @@ mkdir $dir
 echo "Created dir ~/site/rsrc/posts/$dir"
 cd $dir
 
-echo "return" >> meta.lua
+echo "return {" >> meta.lua
 echo "    section = {\"\"}," >> meta.lua
 echo "    title   = \"$title\"," >> meta.lua
 echo "    date    = \"`date '+%F %H:%M %z'`\"," >> meta.lua
