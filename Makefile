@@ -3,7 +3,7 @@ LUA=luajit
 export LUA_PATH=src/lua/?.lua
 SYNC=rsync -a --exclude=".gitignore" --out-format="copying %f%L"
 .DELETE_ON_ERROR: #delete target if fails
-.PHONY: all content scss js assets src clean fresh reload refresh
+.PHONY: all content scss js assets src clean fresh reload refresh newpost
 all:content assets src
 
 CACHE_TARGET =$(patsubst rsrc/%/meta.lua,.lua_cache/%.lua,$(wildcard rsrc/*/*/meta.lua))
@@ -57,4 +57,6 @@ fresh: clean all
 reload: all
 	nginx -p site -c conf/nginx.conf `if [ -f site/logs/nginx.pid ]; then echo "-s reload"; fi`
 refresh: reload
-	src/reload.sh "localhost:8080/"
+	src/sh/reload.sh "localhost:8080/"
+newpost:
+	src/sh/newpost.sh
