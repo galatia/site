@@ -1,3 +1,4 @@
 .nginx.pid
 .lua_cache/
-./site/
+site/
+!src/site/
