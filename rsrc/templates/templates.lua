@@ -65,6 +65,7 @@ function M.default(t)
     p.section = p.section or (p.sections and p.sections[1])
     p.body = {
       [[<html lang="en-US"><head>]],
+        [[<meta charset="utf-8">]],
         [[<link href="/index.css" rel="stylesheet" type="text/css">]],
         [[<script src="/index.js"></script>]],
       [[</head>]],
@@ -97,10 +98,10 @@ M.archive = {
 
 function M.post(p)
     return cowbody(p,{[[
-<div class="]],p.pinned and "pinned " or "",[[post">
-  <h2>]],p.title,[[</h2>]],
-  [[<div>]],p.body,[[</div>
-</div>]]})
+    <div class="]],p.pinned and "pinned " or "",[[post">
+    <h1>]],p.title,[[</h1>]],
+    [[<div>]],p.body,[[</div>
+    </div>]]})
 end
 
 function M.render(p)
