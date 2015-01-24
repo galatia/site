@@ -6,23 +6,38 @@ SYNC=rsync -a --exclude=".gitignore" --out-format="copying %f%L"
 .PHONY: all content scss js assets src clean fresh reload refresh
 all:content assets src
 
+clean:
+	@if [ -e site/logs/nginx.pid ]; then mv site/logs/nginx.pid .nginx.pid; fi
+	rm -rf .lua_cache/ site/
+fresh: clean all
+reload: all
+	nginx -p site -c conf/nginx.conf `if [ -f site/logs/nginx.pid ]; then echo "-s reload"; fi`
+refresh: reload
+	src/reload.sh "localhost:8080/"
+
 CACHE_TARGET =$(patsubst rsrc/%/meta.lua,.lua_cache/%.lua,$(wildcard rsrc/*/*/meta.lua))
 SCSS_SOURCES =$(wildcard rsrc/assets/scss/*.scss)
 JS_SOURCES   =$(wildcard rsrc/assets/js/*.js)
 
+assets:scss js
+	@mkdir -p site/assets
+	@GLOBIGNORE="*scss:*js"; $(SYNC) rsrc/assets/* site/assets/
+
 content:site/lua/content.lua
+
+ifeq ($(strip $(CACHE_TARGET)),)
+site/lua/content.lua:
+	touch $@
+else
 site/lua/content.lua: $(CACHE_TARGET)
 	$(DIR_MAKER)
 	@printf "making index..."
 	@printf '%s\n' $(CACHE_TARGET) | $(LUA) src/lua/mkindex.lua > $@
 	@printf "done\n"
+endif
 .lua_cache/%.lua:rsrc/%/meta.lua rsrc/%/index.md
 	$(DIR_MAKER)
 	$(LUA) src/lua/mkpost.lua rsrc/$* > $@
-
-assets:scss js
-	@mkdir -p site/assets
-	@GLOBIGNORE="*scss:*js"; $(SYNC) rsrc/assets/* site/assets/
 
 ifeq ($(strip $(SCSS_SOURCES)),)
 scss:
@@ -49,12 +64,3 @@ src:
 	@if [ -f .nginx.pid ]; then mv .nginx.pid site/logs/nginx.pid; fi
 	@$(SYNC) src/site/* site/
 	@$(SYNC) rsrc/templates site/lua
-
-clean:
-	@if [ -e site/logs/nginx.pid ]; then mv site/logs/nginx.pid .nginx.pid; fi
-	rm -rf .lua_cache/ site/
-fresh: clean all
-reload: all
-	nginx -p site -c conf/nginx.conf `if [ -f site/logs/nginx.pid ]; then echo "-s reload"; fi`
-refresh: reload
-	src/reload.sh "localhost:8080/"
