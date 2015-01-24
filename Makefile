@@ -1,43 +1,59 @@
 DIR_MAKER=@mkdir -p $(@D) 
+LUA=luajit
+export LUA_PATH=src/lua/?.lua
+SYNC=rsync -a --exclude=".gitignore" --out-format="copying %f%L"
 .DELETE_ON_ERROR: #delete target if fails
-.PHONY: all posts pages imgs scss js assets clean 
-all:posts pages assets
+.PHONY: all content scss js assets src clean fresh reload refresh
+all:content assets src
 
-POSTS_SOURCES=$(wildcard rsrc/posts/*/*.md)
-PAGES_SOURCES=$(wildcard rsrc/pages/*.md) 
+CACHE_TARGET =$(patsubst rsrc/%/meta.lua,.lua_cache/%.lua,$(wildcard rsrc/*/*/meta.lua))
 SCSS_SOURCES =$(wildcard rsrc/assets/scss/*.scss)
-IMG_SOURCES  =$(wildcard rsrc/assets/imgs/*)
 JS_SOURCES   =$(wildcard rsrc/assets/js/*.js)
-POSTS_TARGET =$(patsubst rsrc/posts/%.md,site/%.html,$(POSTS_SOURCES)) 
-PAGES_TARGET =$(patsubst rsrc/pages/%.md,site/%.html,$(PAGES_SOURCES))
 
-posts:$(POSTS_TARGET)
-site/%.html:rsrc/posts/%.md
+content:site/lua/content.lua
+site/lua/content.lua: $(CACHE_TARGET)
 	$(DIR_MAKER)
-	pandoc -f markdown -t html5 -o $@ $<
-
-pages:$(PAGES_TARGET)
-site/%.html:rsrc/pages/%.md
+	@printf "making index..."
+	@printf '%s\n' $(CACHE_TARGET) | $(LUA) src/lua/mkindex.lua > $@
+	@printf "done\n"
+.lua_cache/%.lua:rsrc/%/meta.lua rsrc/%/index.md
 	$(DIR_MAKER)
-	pandoc -f markdown -t html5 -o $@ $<
+	$(LUA) src/lua/mkpost.lua rsrc/$* > $@
 
-imgs:$(IMG_SOURCES)
-	@mkdir -p site
-	cp -R rsrc/assets/imgs/. site/
+assets:scss js
+	@mkdir -p site/assets
+	@GLOBIGNORE="*scss:*js"; $(SYNC) rsrc/assets/* site/assets/
 
-scss:site/index.css
-site/index.css:rsrc/assets/index.scss
+ifeq ($(strip $(SCSS_SOURCES)),)
+scss:
+else
+scss:site/assets/index.css
+site/assets/index.css .INTERMEDIATE:rsrc/assets/index.scss
 	@mkdir -p site
 	sassc -t compressed $< > $@
-	rm $<
 rsrc/assets/index.scss:$(SCSS_SOURCES)
 	cat $^ > $@ </dev/null
+endif
 
-js:site/index.js
-site/index.js:$(JS_SOURCES)
+ifeq ($(strip $(JS_SOURCES)),)
+js:
+else
+js:site/assets/index.js
+site/assets/index.js:$(JS_SOURCES)
 	uglifyjs $^ -o $@ -c -m </dev/null
+endif
 
-assets:imgs scss js
+src:
+	@mkdir -p site/logs
+	@if [ -f .nginx.pid ]; then mv .nginx.pid site/logs/nginx.pid; fi
+	@$(SYNC) src/site/* site/
+	@$(SYNC) rsrc/templates site/lua
 
 clean:
-	rm -rf site/
+	@if [ -e site/logs/nginx.pid ]; then mv site/logs/nginx.pid .nginx.pid; fi
+	rm -rf .lua_cache/ site/
+fresh: clean all
+reload: all
+	nginx -p site -c conf/nginx.conf `if [ -f site/logs/nginx.pid ]; then echo "-s reload"; fi`
+refresh: reload
+	src/reload.sh "localhost:8080/"

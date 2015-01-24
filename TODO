@@ -1,3 +1,37 @@
+* directory per post/page
+X* index.md, meta.lua
+X* get rid of pandoc, makefile will call lua script, which will:
+X** convert md to html
+X** combine with metadata into a lua table
+X makefile needs to copy src/site/ into site/
+X templates are in rsrc/templates/ and need to be copied into site/lua
+X catch-all location assumes page, and 404 otherwise
+X template passes through fields
+X "published" metadata fields
+X archive
+X date URLs are for posts
+X sections / authors with body classes
+X sidebar panels
+X subdomain for section
+* css
+** rolling sidebar
+** full-width images
+* things google encourages you to do
+** meta keywords, desc
+* home page
+* tags
+* below the fold / teaser
+* mathjax
+* code blocks / syntax highlighting
+** highlight.js?
+* custom 404 and 500 pages
+* RSS
+** tags RSS
+* google analytics
+* git commit history link
+* inline comments(!)
+
+===
 X* handle pages
 X* handle assets
 X** cp imgs
@@ -20,6 +54,15 @@ X** mininfy and bundle js
 * tags
 * tag RSS
 
+===
+FUTURE
+===
+
+* Travel section has a heatmap over geodata, and clicking on areas
+  reveals posts near that area
+* Maybe also an animation/visualization of latitude vs time
+* Visualize spending patterns
+* Visualize commit patterns
 
 SEB:
 * left is text, right is code and adds the parts
