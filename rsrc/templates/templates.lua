@@ -65,6 +65,7 @@ function M.default(t)
     p.section = p.section or (p.sections and p.sections[1])
     p.body = {
       [[<html lang="en-US"><head>]],
+        [[<meta charset="utf-8">]],
         [[<link href="/index.css" rel="stylesheet" type="text/css">]],
         [[<script src="/index.js"></script>]],
       [[</head>]],
