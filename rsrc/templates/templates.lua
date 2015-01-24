@@ -98,10 +98,10 @@ M.archive = {
 
 function M.post(p)
     return cowbody(p,{[[
-<div class="]],p.pinned and "pinned " or "",[[post">
-  <h2>]],p.title,[[</h2>]],
-  [[<div>]],p.body,[[</div>
-</div>]]})
+    <div class="]],p.pinned and "pinned " or "",[[post">
+    <h1>]],p.title,[[</h1>]],
+    [[<div>]],p.body,[[</div>
+    </div>]]})
 end
 
 function M.render(p)
