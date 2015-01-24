@@ -17,6 +17,7 @@ if [ -d "$dir" ]; then
 fi
 
 mkdir $dir
+echo "Created dir ~/site/rsrc/posts/$dir"
 cd $dir
 
 echo "return" >> meta.lua
@@ -31,4 +32,4 @@ echo "}" >> meta.lua
 echo "<!--$title" >> index.md
 echo "============-->" >> index.md
 
-git add meta.lua index.md
+vim -c 'e index.md | vsplit meta.lua'
