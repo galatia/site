@@ -29,7 +29,7 @@ scss:
 else
 scss:site/assets/index.css
 site/assets/index.css .INTERMEDIATE:rsrc/assets/index.scss
-	@mkdir -p site
+	$(DIR_MAKER)
 	sassc -t compressed $< > $@
 rsrc/assets/index.scss:$(SCSS_SOURCES)
 	cat $^ > $@ </dev/null
@@ -40,6 +40,7 @@ js:
 else
 js:site/assets/index.js
 site/assets/index.js:$(JS_SOURCES)
+	$(DIR_MAKER)
 	uglifyjs $^ -o $@ -c -m </dev/null
 endif
 
