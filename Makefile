@@ -25,7 +25,9 @@ POST_ASSET_SOURCES  =$(wildcard rsrc/*/*/assets/*)
 assets:scss js
 	@mkdir -p site/assets
 	@GLOBIGNORE="*scss:*js"; $(SYNC) rsrc/assets/* site/assets/
-	@$(SYNC) $(POST_ASSET_SOURCES) site/assets/
+ifneq ($(strip $(POST_ASSET_SOURCES)),)
+	@GLOBIGNORE="*scss:*js"; $(SYNC) $(POST_ASSET_SOURCES) site/assets/
+endif
 
 content:site/lua/content.lua
 
