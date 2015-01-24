@@ -9,7 +9,7 @@ local function datefmt(t)
 end
 
 local Sections = {"tech", "travel", "curios",
-    ["tech"] = {title = "Technical Jounal"},
+    ["tech"]   = {title = "Technical Journal"},
     ["travel"] = {title = "Travel Notes"},
     ["curios"] = {title = "Cabinet of Curiosity"}
 }
