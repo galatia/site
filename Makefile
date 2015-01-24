@@ -13,7 +13,7 @@ fresh: clean all
 reload: all
 	nginx -p site -c conf/nginx.conf `if [ -f site/logs/nginx.pid ]; then echo "-s reload"; fi`
 refresh: reload
-	src/reload.sh "localhost:8080/"
+	src/sh/reload.sh "localhost:8080/"
 newpost:
 	src/sh/newpost.sh
 
