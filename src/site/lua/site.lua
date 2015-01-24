@@ -108,8 +108,9 @@ function M.archive()
         for i,y in ipairs(sect.years) do
             table.insert(archive,(archive_year(sect,y)).body)
         end
-        archive = {section=sd,body=archive}
+        archive = {body=archive}
     end
+    archive.section = sd
     ngx.print((t.archive.wrap(archive)).body)
     ngx.exit(200)
 end
