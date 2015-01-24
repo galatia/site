@@ -16,12 +16,14 @@ refresh: reload
 	src/reload.sh "localhost:8080/"
 
 CACHE_TARGET =$(patsubst rsrc/%/meta.lua,.lua_cache/%.lua,$(wildcard rsrc/*/*/meta.lua))
-SCSS_SOURCES =$(wildcard rsrc/assets/scss/*.scss)
+SCSS_SOURCES =$(sort $(wildcard rsrc/assets/scss/*.scss))
 JS_SOURCES   =$(wildcard rsrc/assets/js/*.js)
+POST_ASSET_SOURCES  =$(wildcard rsrc/*/*/assets/*)
 
 assets:scss js
 	@mkdir -p site/assets
 	@GLOBIGNORE="*scss:*js"; $(SYNC) rsrc/assets/* site/assets/
+	@$(SYNC) $(POST_ASSET_SOURCES) site/assets/
 
 content:site/lua/content.lua
 
