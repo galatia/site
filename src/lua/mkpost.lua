@@ -1,4 +1,3 @@
-local cmark = require("cmark")
 local s = require("serpent")
 
 local meta = dofile(arg[1] .. "/meta.lua")
@@ -24,8 +23,8 @@ if meta.section then
     meta.section = nil
 end
 
-local f = assert(io.open(arg[1] .. "/index.md", "r"))
-meta.body = cmark.to_html(f:read("*all"))
+local f = assert(io.open(arg[1] .. "/index.html", "r"))
+meta.body = f:read("*all")
 f:close()
 
 print(s.dump(meta))

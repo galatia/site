@@ -41,7 +41,9 @@ site/lua/content.lua: $(CACHE_TARGET)
 	@printf '%s\n' $(CACHE_TARGET) | $(LUA) src/lua/mkindex.lua > $@
 	@printf "done\n"
 endif
-.lua_cache/%.lua:rsrc/%/meta.lua rsrc/%/index.md
+rsrc/%/index.html:rsrc/%/index.md
+	pandoc -o $@ $^
+.lua_cache/%.lua:rsrc/%/meta.lua rsrc/%/index.html
 	$(DIR_MAKER)
 	$(LUA) src/lua/mkpost.lua rsrc/$* > $@
 
