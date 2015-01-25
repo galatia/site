@@ -11,7 +11,7 @@ end
 local Sections = {"tech", "travel", "curios",
     ["tech"]   = {title = "Technical Journal"},
     ["travel"] = {title = "Travel Notes"},
-    ["curios"] = {title = "Cabinet of Curiosity"}
+    ["curios"] = {title = "Curiosities"}
 }
 
 local sidebar = {}
@@ -73,7 +73,9 @@ function M.default(t)
         section," ",table.concat(p.authors or {}," "),
         [[">]],
       sidebar.render(p),
+      [[<main>]],
       p.body,
+      [[</main>]],
       [[</body></html>]]
     }
     return p
