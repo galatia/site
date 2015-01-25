@@ -1,0 +1,69 @@
+// This File is imported last, and will override other styles in the cascade
+// Add styles here to make changes without digging in too much
+a {color: $solar-blue; text-decoration: none}
+a:active {color: $solar-cyan}
+a:visited {color: $solar-violet}
+header:first-child { 
+  h2 {
+    a, a:visited {
+      color:$solar-blue;
+      @media screen {
+        color:$solar-blue;
+      }
+    }
+  }
+}
+a {
+    @media screen {
+        @include transition(color 220ms linear, text-shadow 120ms cubic-bezier(.1,.83,.83,.67), background-color 200ms linear)
+    }
+}
+a:hover {text-shadow: 0 0 0.22em $solar-blue;}
+.gist .gist-file .gist-meta a:hover { text-shadow: none; color: $solar-blue; }
+.gist .gist-file .gist-data { background: none !important; }
+//.sidebar, nav, footer { a:hover {text-shadow: none;} }
+
+div {
+    @include fontyGoodness;
+    font-family: "GaramondNo8",serif;
+}
+
+h1, h2 {
+    font-family: "GaramondNo8",serif;
+}
+
+footer p.meta {
+  a.left, a.right {
+    font-family: "GaramondNo8",serif;
+    margin:0;
+    vertical-align: baseline;
+  }
+  a.left { text-align: left; }
+  a.right { text-align: right; }
+}
+
+p {
+    @include stdFont;
+}
+
+nav p {
+    text-align: left;
+}
+
+blockquote blockquote {
+  margin-bottom: 0.10em;
+}
+
+blockquote p {
+  margin-bottom: 0.25em;
+}
+
+.footnotes li:hover a[rev="footnote"] {
+  color: $solar-orange;
+  text-shadow: 0 0 1px $solar-orange;
+}
+
+.footnotes li:hover a[rev="footnote"]:hover {
+  color: $solar-blue;
+  text-shadow: 0 0 1px $solar-blue;
+}
