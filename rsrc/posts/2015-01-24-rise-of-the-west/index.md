@@ -3,8 +3,6 @@
 
 I recently found this...thing...in a folder called "10th grade" while going through old files on my laptop. Apparently I was once a 10th grader who wrote pretentious, obnoxiously long essays on stuff like historiography. At some point I think I must have gotten bored writing because I also found an outline that goes further, and it ends awkwardly. So, um, read at your peril.
 
------------------
-
 
 Introduction
 ------------

@@ -4,5 +4,5 @@ return {
     date    = "2015-01-24 22:24 +0000",
     authors = {"eliana"},
     tags    = {"history", "historiography", "serious"},
-    published = false
+    published = true
 }
