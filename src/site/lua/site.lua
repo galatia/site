@@ -155,7 +155,7 @@ function M.catchall()
 end
 
 function M.draft()
-    local m = ngx.re.match(ngx.var.uri,[=[draft/([\w/-]{1,128})(?<!/)]=],"ijo")
+    local m = ngx.re.match(ngx.var.uri,[=[drafts?/([\w/-]{1,128})(?<!/)]=],"ijo")
     if m then
         local p = cx.drafts[m[1]]
         if p then
