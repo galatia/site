@@ -34,7 +34,6 @@ function sidebar.section(t)
     return {
     [[<div class="]],t[1],[[ section panel">]],
     [[<h2>]],(Sections[t[1]] or {title=t[1]}).title,[[</h2>]],
-    [[Recent posts:<br/>]],
     [[<ul>]],sidebar.recents(t[1],n),[[</ul>]],
     [[<div class="see-all"><a href="]],
     "//",t[1],".",site.current_domain_port(),"/archive",
