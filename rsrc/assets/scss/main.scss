@@ -1,0 +1,292 @@
+///// COLORS //////
+
+$body-bg:              #f8f8f8;
+$nav-bg:               #dedede;
+$link:                 #268bd2;
+$link-visited:         #6c71c4;
+$footnote-rev-hover:   #cb4b16;
+$footnote-color:       #414340;
+$footnote-num-color:   #515350;
+
+///// UTILS /////
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+$dotted-top: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAABCAYAAACsXeyTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAFUlEQVQIHWNIS0sr/v//PwMMDzY+ADqMahlW4J91AAAAAElFTkSuQmCC') top left repeat-x;
+$dotted-bottom: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAABCAYAAACsXeyTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAFUlEQVQIHWNIS0sr/v//PwMMDzY+ADqMahlW4J91AAAAAElFTkSuQmCC') bottom left repeat-x;
+
+////// TEXT STYLES //////
+
+$sans: "PT Sans", "Helvetica Neue", Arial, sans-serif !default;
+$serif: "GaramondNo8", "PT Serif", Georgia, Times, "Times New Roman", serif !default;
+$mono: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace !default;
+$heading-font-family: "GaramondNo8", "PT Serif", "Georgia", "Helvetica Neue", Arial, sans-serif !default;
+
+// Garamond!
+
+@font-face {
+  font-family: 'GaramondNo8';
+  src: url('/assets/garamondno8/GaramondNo8-Regular.otf') format('opentype'),
+       url('/assets/garamondno8/reg-webfont.eot?#iefix') format('embedded-opentype'),
+       url('/assets/garamondno8/reg-webfont.woff') format('woff'),
+       url('/assets/garamondno8/reg-webfont.ttf') format('truetype'),
+       url('/assets/garamondno8/reg-webfont.svg#GaramondNo8Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GaramondNo8';
+  src: url('/assets/garamondno8/GaramondNo8-Medium.otf') format('opentype'),
+       url('/assets/garamondno8/med-webfont.eot?#iefix') format('embedded-opentype'),
+       url('/assets/garamondno8/med-webfont.woff') format('woff'),
+       url('/assets/garamondno8/med-webfont.ttf') format('truetype'),
+       url('/assets/garamondno8/med-webfont.svg#GaramondNo8medular') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GaramondNo8';
+  src: url('/assets/garamondno8/GaramondNo8-Italic.otf') format('opentype'),
+       url('/assets/garamondno8/ita-webfont.eot?#iefix') format('embedded-opentype'),
+       url('/assets/garamondno8/ita-webfont.woff') format('woff'),
+       url('/assets/garamondno8/ita-webfont.ttf') format('truetype'),
+       url('/assets/garamondno8/ita-webfont.svg#GaramondNo8Italic') format('svg');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@mixin fontyGoodness {
+    text-rendering: optimizeLegibility;
+    font-variant-ligatures:contextual common-ligatures;
+    -webkit-font-variant-ligatures:contextual common-ligatures;
+    font-variant-alternates:swash();
+    -webkit-font-variant-alternates:swash();
+    -moz-font-feature-settings: "liga", "swsh=1";
+    -ms-font-feature-settings: "liga", "swsh";
+    -webkit-font-feature-settings:"liga", "swsh";
+    -o-font-feature-settings: "liga", "swsh";
+    font-feature-settings:"liga", "swsh";
+}
+
+// Body text
+
+@mixin stdBodyFont {
+    @include fontyGoodness;
+    font-family: $serif;
+    font-size: 1.08em;
+    text-align: justify;
+    line-height: 1.40em;
+}
+p {
+  @include stdBodyFont;
+  margin-bottom: 1.23em;
+}
+div {
+  @include fontyGoodness;
+  font-family: $serif;
+}
+
+// Headings/Headers
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+}
+h1 {
+  font-family: $heading-font-family;
+  font-size: 2.2em;
+  font-weight: normal;
+  line-height: 1.2em;
+  margin-bottom: 0.6667em;
+}
+main h1 {
+  background: $dotted-bottom;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+h2 {
+  font-family: $heading-font-family;
+  font-size: 1.5em;
+}
+main h2 {
+  padding-top: 0.8em;
+  background: $dotted-top;
+}
+h3 {
+  font-size: 1.3em;
+}
+h4 {
+  font-size: 1em;
+}
+h5 {
+  font-size: .9em;
+}
+h6 {
+  font-size: .8em;
+}
+
+// Links
+
+a {
+  color: $link;
+  &:active, &:visited {
+    color: $link-visited;
+  }
+  text-decoration: none;
+  &:hover {
+    text-shadow: 0 0 0.22em $link;
+  }
+  @media screen {
+    @include transition(color 220ms linear, text-shadow 120ms cubic-bezier(.1,.83,.83,.67), background-color 200ms linear)
+  }
+}
+
+// Lists
+
+article {
+  ul, ol {
+    padding-left: 1.09em;
+    padding-right: 1.09em;
+    margin-top: -10px;
+    li {
+      @include stdBodyFont;
+      margin-bottom: 1ex;
+    }
+    margin-bottom: 1.23em;
+  }
+
+  ul { list-style-type: disc;
+    ul { list-style-type: circle; margin-bottom: 0px;
+      ul { list-style-type: square; margin-bottom: 0px; }}}
+
+  ol { list-style-type: decimal;
+    ol { list-style-type: lower-alpha; margin-bottom: 0px;
+      ol { list-style-type: lower-roman; margin-bottom: 0px; }}}
+
+  ul, ol { &, ul, ol { margin-left: 1.3em; }}
+}
+ul, ol { ul, ol { margin-bottom: 0em; }}
+
+// Horizontal rules
+
+hr { margin-bottom: 0.2em; }
+article hr {
+  border-top-style: none;
+  border-bottom-style: dotted;
+  margin-top: 0.75em;
+  margin-bottom: 1.0em;
+  border-bottom-color: #7e7e7e;
+  opacity: 0.7;
+}
+
+// Blockquotes
+
+blockquote {
+  position: relative;
+  margin: 0;
+  margin-bottom: 1.23em;
+  padding-left: 1.7em;
+  padding-right: 1.7em;
+  margin-bottom: 1.2em;
+  p {
+    margin-bottom: 0.25em;
+  }
+  blockquote {
+    margin-bottom: 0.1em;
+  }
+}
+
+// Footnotes
+
+a[rev='footnote']{ font-size: .75em; padding: 0 .3em; line-height: 1; }
+sup {
+    font-size: 0.75em;
+    position: relative;
+    display: inline-block;
+    line-height: .8em;
+    padding: 0;
+    margin: 0 0.02em 0 0.06em;
+}
+.footnotes {
+    ol {
+      margin-left: 1.2em;
+      padding-left: 0;
+      li {
+        margin-left: 0;
+        margin-bottom: 0.85em;
+        padding-left: 0;
+        color: $footnote-num-color;
+        font-size: 0.95rem;
+        line-height: 0.95rem;
+        p {
+          color: $footnote-color;
+          display: inline-block;
+          margin: 0;
+          font-size: 0.9rem;
+          line-height: 0.95rem;
+          vertical-align: baseline;
+          a:last-of-type {
+            &:hover {
+              color: $link;
+              text-shadow: 0 0 1px $link;
+            }
+          }
+        }
+      }
+    }
+    li:hover {
+      a:last-of-type {
+        color: $footnote-rev-hover;
+        text-shadow: 0 0 1px $footnote-rev-hover;
+      }
+    }
+}
+
+///// LAYOUT //////
+
+body {
+  background: $body-bg url('/assets/imgs/noise.png') top left;
+}
+
+// Sidebar
+nav {
+  background-color: $nav-bg;
+  position:fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  padding-left:15px;
+  padding-right:15px;
+  width: 185px;
+  h2 {
+    margin-top: 8px;
+    margin-bottom: 0;
+  }
+  ul {
+    list-style: none;
+    padding-left: 0;
+    li {
+      box-shadow: #fff 0 1px;
+      border-bottom: 1px solid #c0c0c0;
+    }
+  }
+}
+
+main {
+   position:relative;
+   top:9px;
+   margin-left: 240px;
+   margin-right: 24px;
+   max-width: 800px;
+}
+
+body.collapsed {
+  main {
+    max-width: 1000px;
+  }
+}
