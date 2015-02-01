@@ -1,5 +1,7 @@
 local M = {}
 
+local home_content = require("home_content")
+
 local function cowtable(p,t) return setmetatable(t,{__index=p}) end
 local function cow(p) return cowtable(p,{}) end
 local function cowbody(p,b) return cowtable(p,{body=b}) end
@@ -89,6 +91,7 @@ M.home = {
     return M.default {
       section = "home", nosidebar = true, body = {
         [[<nav><ul>]], sectionlinks, [[</ul></nav>]],
+        home_content.render()
       }
     }
   end
