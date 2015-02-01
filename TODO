@@ -1,29 +1,35 @@
-* directory per post/page
-X* index.md, meta.lua
-X* get rid of pandoc, makefile will call lua script, which will:
-X** convert md to html
-X** combine with metadata into a lua table
-X makefile needs to copy src/site/ into site/
-X templates are in rsrc/templates/ and need to be copied into site/lua
-X catch-all location assumes page, and 404 otherwise
-X template passes through fields
-X "published" metadata fields
-X archive
-X date URLs are for posts
-X sections / authors with body classes
-X sidebar panels
-X subdomain for section
+PLAN
+====
 * css
-** rolling sidebar
+** sidebar
+*** dark pattern
+*** light font
+*** header style
+*** more space between panels
+*** collapsible
+*** responsive
 ** full-width images
-* things google encourages you to do
-** meta keywords, desc
 * home page
-* tags
-* below the fold / teaser
+** blog name block menu
+** bio
+** photos
+** social icons
 * mathjax
+* measure theory post
+** outlining
+*** decide images
+** writing
+** making images
+
+FUTURE
+======
+* below the fold / teaser
+* better archive style
 * code blocks / syntax highlighting
 ** highlight.js?
+* tags
+* things google encourages you to do
+** meta keywords, desc
 * custom 404 and 500 pages
 * RSS
 ** tags RSS

@@ -56,14 +56,6 @@ local function redir_to_canonical(p)
 end
 
 function M.home()
-    --local sections = {}
-    --for i,s in ipairs(Sections) do
-        --local section = {}
-        --for j,p in ipairs(cx.sections[s]) do
-            --table.insert(section,t.home.section.post(p).body)
-        --end
-        --table.insert(sections,t.home.section.wrap{body=section,section=s}.body)
-    --end
     ngx.print(t.home.render().body)
     ngx.exit(200)
 end
