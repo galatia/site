@@ -30,7 +30,9 @@ for i,person in ipairs(social_links) do
 end
 
 local bio = [[
-  Eliana and davidad like mangos.
+  <p>eliana and davidad are traveling scientists/<wbr>programmers.</p>
+  <p>eliana is a <a href="http://en.wikipedia.org/wiki/Thiel_Fellowship">thiel fellow</a> and davidad is a research affiliate of the <a href="http://syntheticneurobiology.org">synthetic neurobiology</a> group at the <a href="http://web.mit.edu">mit</a> <a href="http://www.media.mit.edu">media lab</a>.</p>
+  <p>while we mostly care about the timescale of decades, we like to play around with deep learning, write high-performance code, and explore interesting ideas. we don't like bad software and human aging and maybe we'll try to get rid of them.</p>
 ]]
 
 function M.render()
