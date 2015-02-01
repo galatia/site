@@ -69,32 +69,37 @@ function M.default(t)
         [[<script src="/index.js"></script>]],
       [[</head>]],
       [[<body class="]],
-        section," ",table.concat(p.authors or {}," "),
+        section and (section.." ") or "",table.concat(p.authors or {}," "),
         [[">]],
-      sidebar.render(p),
-      [[<main>]],
-      p.body,
-      [[</main>]],
+      p.nosidebar and "" or sidebar.render(p),
+      p.nosidebar and p.body or {"<main>", p.body, "</main>"},
       [[</body></html>]]
     }
     return p
 end
 
 M.home = {
-    render = function() return {body = "<h1>Home page</h1>"} end,
-    wrap = function(b) return M.default(cowtable(b,{nav=false})) end,
-    section = {
-        wrap = function(s) return cowbody(s,{"<section><h2>",s.section,"</h2><ul>",s.body,"</ul></section>"}) end,
-        post = function(p) return cowbody(p,{
-            [[<a href="]],site.canonical_url(p),[["><li>]],datefmt(p.timestamp),[[ <strong>]],p.title,[[</strong></li></a>]]}) end
+  render = function()
+    sectionlinks = {}
+    for n,s in ipairs(Sections) do
+      table.insert(sectionlinks,
+        {[[<a href="//]],s,".",site.current_domain_port(),[[/archive"><li>]],
+         Sections[s].title,[[</li></a>]]})
+    end
+    return M.default {
+      section = "home", nosidebar = true, body = {
+        [[<nav><ul>]], sectionlinks, [[</ul></nav>]],
+      }
     }
+  end
 }
 
 M.archive = {
     wrap = function(b) return M.default(b) end,
     month = function(b) return cowbody(b,{b.top and "<h2>" or {[[<li><a href="/archive/]],b.y,'/',b.m,[["><h3>]]}, b.header, b.top and "</h2>" or "</h3></a>","<ul>", b.body, "</ul>", b.top and "" or "</li>"}) end,
     year = function(b) return cowbody(b,{"<h2>",b.header,"</h2><ul>",b.body,"</ul>"}) end,
-    post = M.home.section.post
+    post = function(p) return cowbody(p,{
+            [[<a href="]],site.canonical_url(p),[["><li>]],datefmt(p.timestamp),[[ <strong>]],p.title,[[</strong></li></a>]]}) end
 }
 
 function M.post(p)
