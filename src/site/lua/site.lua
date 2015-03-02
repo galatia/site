@@ -21,9 +21,14 @@ local function current_subdomain()
 end
 site.current_subdomain = current_subdomain
 
+local function current_port()
+  return ngx.var.http_x_orig_port or ngx.var.server_port
+end
+site.current_port = current_port
+
 local function current_domain_port()
     local domain = current_domain()
-    local port = ngx.var.server_port
+    local port = current_port()
     if port ~= 80 then domain = domain .. ":" .. port end
     return domain
 end
@@ -43,7 +48,7 @@ site.canonical_url = canonical_url
 
 local function current_url()
     local url = ngx.var.scheme .. "://" .. ngx.var.host
-    local port = ngx.var.server_port
+    local port = current_port()
     if port ~= 80 then url = url .. ":" .. port end
     url = url .. ngx.var.uri
     return url

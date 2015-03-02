@@ -71,8 +71,9 @@ function M.default(t)
         [[<script src="/index.js"></script>]],
       [[</head>]],
       [[<body class="]],
-        section and (section.." ") or "",table.concat(p.authors or {}," "),
+        p.section and (p.section.." ") or "",table.concat(p.authors or {}," "),
         [[">]],
+      [[<div id="aboutus"><a href="//]],site.current_domain_port(),[["/>About Us</a></div>]],
       p.nosidebar and "" or sidebar.render(p),
       p.nosidebar and p.body or {"<main>", p.body, "</main>"},
       [[</body></html>]]
