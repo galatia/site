@@ -1,7 +1,7 @@
 <!--Hacking Luxury: Feel Rich While Living Cheaply
 ============-->
 
-Conventional wisdom suggests that if you need to live frugally[^1], you should make each purchasing choice proportional to your total budget. For example, if you're keeping expenses low, you shouldn't buy the priciest bottle of olive oil in the store, get high-quality bluetooth speakers, or wear $50 shirts. 
+Conventional wisdom suggests that if you need to live frugally[^1], you should make each purchasing choice proportional to your total budget. For example, if you're keeping expenses low, you shouldn't buy the priciest bottle of olive oil in the store, get high-quality Bluetooth speakers, or wear $50 shirts. 
 
 [^1]: If you are living paycheck to paycheck and literally every dollar counts, the advice in this post probably isn't relevant to you. I'm assuming that you have some wiggle room in your budget and that your ability to continue supporting yourself doesn't rely on every possible savings optimization.
 
@@ -35,11 +35,11 @@ At the grocery store, I buy basically whatever unprepared items I want. Olive oi
 #### Music
 My partner and I have somewhat snobby music tastes and are mildly audiophilic. Put another way, jazz (especially with complicated bass) doesn't sound super great on phone or computer speakers. We used to go to concerts sometimes in SF, but we cut that out of our lifestyle. 
 
- So are we doomed now to poor music quality? Nope! We splurged on good-quality travel bluetooth speakers (the [Denon Envaya Mini](http://www.denon.co.uk/uk/product/bluetooth/bluetoothspeakers/envayamini)), and now we can feel almost like we have a sound stage whenever we want. Listening to Brad Mehldau or Avishai Cohen on these speakers is fully engaging, and I don't feel as much of a need to seek out live entertainment anymore.
+ So are we doomed now to poor music quality? Nope! We splurged on good-quality travel Bluetooth speakers (the [Denon Envaya Mini](http://www.denon.co.uk/uk/product/bluetooth/bluetoothspeakers/envayamini)), and now we can feel almost like we have a sound stage whenever we want. Listening to Brad Mehldau or Avishai Cohen on these speakers is fully engaging, and I don't feel as much of a need to seek out live entertainment anymore.
 
 ### 3. Generally don't compromise on quality
 
-Buying good-quality speakers instead of sticking to laptop speakers might be seen as unfrugal. But while the upfront cost (~$150) was somewhat large for a luxury item, they'll last a long time and we get enormous use out of them.
+Buying good-quality speakers instead of sticking to laptop speakers might be seen as infrugal. But while the upfront cost (~$150) was somewhat large for a luxury item, they'll last a long time and we get enormous use out of them.
 
 If you can afford slightly higher upfront costs, it's more useful to analyze costs stretched out over the projected lifetime of the item. It is often cheaper over the long run to get a decent quality version of the item you need in the first place, than to have to keep paying for replacements or even small upgrades in quality to satisfy your desire. In some cases, having a higher quality version of an item can also replace having more items of lower quality.
 
@@ -57,8 +57,8 @@ I don't miss having a larger range of options, because I *enjoy* wearing my meri
 
 ## Experience Abundance
 
-Living cheaply doesn't need to mean worrying about how cheap every individual purchase is, or whether you got on sale. What's more important is the absolute amount of money you save for each purchasing choice, and the extent to which it affects your feeling of abundance. You might feel guilty about small luxuries if you need to save (especially if you're paying student debt), but if you're staying within your overall budget, you're not actually doing anything wrong[^1]. If you feel abundance, it will be easier to stick to a more modest lifestyle. 
+Living cheaply doesn't need to mean worrying about how cheap every individual purchase is, or whether you got on sale. What's more important is the absolute amount of money you save for each purchasing choice, and the extent to which it affects your feeling of abundance. You might feel guilty about small luxuries if you need to save (especially if you're paying student debt), but if you're staying within your overall budget, you're not actually doing anything wrong[^2]. If you feel abundance, it will be easier to stick to a more modest lifestyle. 
 
-[^1]: If you need to, you should lower your total budget instead of limiting what you can spend it on.
+[^2]: If you need to, you should lower your total budget instead of limiting what you can spend it on.
 
-It can take time to get used to these new criteria for saving without overcorrecting, but if you have a good feedback loop between your budget and actual expenditure, you might be surprised by how many small luxuries you can get away with. It migh feel dissonant at first, but that's because you're adapting to a more abundant mindset. 
+It can take time to get used to these new criteria for saving without over-correcting, but if you have a good feedback loop between your budget and actual expenditure, you might be surprised by how many small luxuries you can get away with. It might feel dissonant at first, but that's because you're adapting to a more abundant mindset. 
