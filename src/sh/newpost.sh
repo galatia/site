@@ -32,4 +32,10 @@ echo "}" >> meta.lua
 echo "<!--$title" >> index.md
 echo "============-->" >> index.md
 
-vim -c 'e index.md | vsplit meta.lua'
+vim meta.lua
+
+if [ -d "/Applications/Byword.app" ]; then
+    open -a "Byword" index.md
+else
+    vim index.md
+fi
